@@ -15,4 +15,7 @@ app.get('/',function(req,res){
   console.log('what up?');
 })
 
+var routes = require('./config/routes');
+app.use(routes)
+
 app.listen(3000);
