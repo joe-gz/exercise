@@ -28,13 +28,9 @@ workoutsController.createWorkout = function(req,res){
     time: req.body.time
   };
   console.log(workout);
-  new WorkoutModel(workout).save().then(function(err,workout){
-    if (err){
-      console.log(err);
-    } else {
-      console.log('success');
-      res.json(workout)
-    }
+  new WorkoutModel(workout).save().then(function(workout){
+    console.log('success');
+    res.json(workout)
   })
 }
 
@@ -44,6 +40,12 @@ workoutsController.deleteWorkout = function(req,res){
   }).then(function(){
     console.log("delete");
     res.json({success: true});
+  })
+}
+
+workoutsController.updateWorkout = function(req, res){
+  WorkoutModel.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}).then(function(workout){
+    res.json(workout)
   })
 }
 
