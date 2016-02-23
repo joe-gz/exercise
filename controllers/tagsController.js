@@ -25,6 +25,7 @@ tagsController.createTag = function(req,res){
   })
 }
 
+
 tagsController.deleteTag = function(req,res){
   TagModel.findById(req.params.id).then(function(tag){
     return tag.remove();

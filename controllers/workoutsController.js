@@ -49,4 +49,13 @@ workoutsController.updateWorkout = function(req, res){
   })
 }
 
+// workoutsController.addTag = function(req, res){
+//   WorkoutModel.findById(req.params.id).then(function(workout){
+//     TagModel.find(exerciseType: req.body.exerciseType).then(function(tag){
+//       workout.tags.push(tag.id)
+//     })
+//   })
+// }
+
+
 module.exports = workoutsController;
