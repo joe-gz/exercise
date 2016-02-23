@@ -9,6 +9,9 @@ router.route('/workouts')
 router.route('/workouts/:id')
 .get(workoutsController.showWorkout)
 
+router.route('/workouts/:id')
+.delete(workoutsController.deleteWorkout)
+
 router.route('/workouts/new')
 .post(workoutsController.createWorkout)
 

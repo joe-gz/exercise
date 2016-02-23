@@ -22,14 +22,28 @@ workoutsController.showWorkout = function(req,res){
 }
 
 workoutsController.createWorkout = function(req,res){
-  var workout = req.body.description;
+  var workout = {
+    description:req.body.description,
+    feelings: req.body.feelings,
+    time: req.body.time
+  };
   console.log(workout);
-  new WorkoutModel({description:workout}).save().then(function(err,workout){
+  new WorkoutModel(workout).save().then(function(err,workout){
     if (err){
-      console.log(JSON.stringify(err));
+      console.log(err);
     } else {
+      console.log('success');
       res.json(workout)
     }
+  })
+}
+
+workoutsController.deleteWorkout = function(req,res){
+  WorkoutModel.findById(req.params.id).then(function(workout){
+    return workout.remove();
+  }).then(function(){
+    console.log("delete");
+    res.json({success: true});
   })
 }
 

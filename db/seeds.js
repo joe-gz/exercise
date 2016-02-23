@@ -32,3 +32,19 @@ for (var i = 0; i < workouts.length; i++){
     }
   })
 }
+
+var tag1 = new TagModel({exerciseType:"Weights"})
+var tag2 = new TagModel({exerciseType:"Cardio"})
+var tag3 = new TagModel({exerciseType:"Rowing"})
+
+var tags = [tag1,tag2,tag3]
+
+for (var i = 0; i < tags.length; i++){
+  tags[i].save(function(err){
+    if (err){
+      console.log(err);
+    } else {
+      console.log('Tag complete!');
+    }
+  })
+}
