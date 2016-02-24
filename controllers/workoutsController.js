@@ -52,17 +52,26 @@ workoutsController.updateWorkout = function(req, res){
 
 workoutsController.addTag = function(req, res){
   var exercise = req.body.exerciseType;
-  WorkoutModel.findById(req.params.id).then(function(workout){
-    TagModel.findOne({exerciseType: exercise}).then(function(tag){
-      console.log(workout.tags.push(tag.id))
-      console.log(workout.tags);
-      workout.tags.push({_id: tag.id, exerciseType: exercise}).save(function(tag){
-        console.log(tag);
-        res.json(tag);
-      })
-    })
-  })
-}
+  TagModel.findOne({exerciseType: exercise}).then(function(tag){
+    WorkoutModel.findById(req.params.id, function(err, docs){
+      if(err){
+        console.log(err)
+      }
+      else{
+        docs.tags.push(tag);
+
+        docs.save(function(err){
+          if(!err){
+            res.json(docs)
+          }
+          else{
+            console.log(err);
+          }
+        })
+      }
+    });
+  });
+};
 
 
 module.exports = workoutsController;
