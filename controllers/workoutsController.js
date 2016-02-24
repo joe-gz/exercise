@@ -1,5 +1,6 @@
 var express = require('express');
 var WorkoutModel = require('../models/workouts');
+var TagModel = require("../models/tags");
 var router = express.Router();
 
 var workoutsController = {};
@@ -49,13 +50,19 @@ workoutsController.updateWorkout = function(req, res){
   })
 }
 
-// workoutsController.addTag = function(req, res){
-//   WorkoutModel.findById(req.params.id).then(function(workout){
-//     TagModel.find(exerciseType: req.body.exerciseType).then(function(tag){
-//       workout.tags.push(tag.id)
-//     })
-//   })
-// }
+workoutsController.addTag = function(req, res){
+  var exercise = req.body.exerciseType;
+  WorkoutModel.findById(req.params.id).then(function(workout){
+    TagModel.findOne({exerciseType: exercise}).then(function(tag){
+      console.log(workout.tags.push(tag.id))
+      console.log(workout.tags);
+      workout.tags.push({_id: tag.id, exerciseType: exercise}).save(function(tag){
+        console.log(tag);
+        res.json(tag);
+      })
+    })
+  })
+}
 
 
 module.exports = workoutsController;

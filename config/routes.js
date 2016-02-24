@@ -30,5 +30,7 @@ router.route('/tags/:id')
 router.route('/tags/new')
 .post(tagsController.createTag)
 
+router.route('/workouts/:id/addtag')
+.put(workoutsController.addTag)
 
 module.exports = router;
