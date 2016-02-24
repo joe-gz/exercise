@@ -21,6 +21,13 @@ workoutsController.showWorkout = function(req,res){
   })
 }
 
+workoutsController.updateWorkout = function(req,res){
+  WorkoutModel.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}).then(function(workout){
+    console.log(workout);
+    res.json(workout);
+  });
+};
+
 workoutsController.createWorkout = function(req,res){
   var workout = {
     description:req.body.description,
