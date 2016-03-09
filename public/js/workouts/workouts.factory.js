@@ -1,14 +1,17 @@
 "use strict";
-angular.module('leagues')
-  .factory('LeagueFactory', function(
-    $http
-  ){
 
-  var service = {};
+(function(){
+  angular
+  .module("workouts")
+  .factory("WorkoutFactory", [
+    "$resource",
+    WorkoutFactoryFunction
+  ]);
 
-  service.getLeagueData = function(league_id){
-    return $http.get('/jsonData/' + league_id + '.json');
-  };
-
-  return service;
-});
+  function WorkoutFactoryFunction($resource){
+    console.log('workout factory');
+    return $resource("/workouts", {}, {
+      update: {method: "PUT"}
+    });
+  }
+}());

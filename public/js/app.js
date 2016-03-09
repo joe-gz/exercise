@@ -2,7 +2,7 @@
 
 (function(){
   angular
-  .module("fsVisual", [
+  .module("exercise", [
     "ui.router",
     "workouts"
     ])

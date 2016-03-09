@@ -1,0 +1,11 @@
+<div class = "show-workouts">
+  <h2>New Workout</h2>
+
+  <!-- <div data-workout-form data-workout="WorkoutIndexViewModel.newWorkout"></div> -->
+
+  <h2>These are all the Workouts</h2>
+
+  <div data-ng-repeat="workout in WorkoutIndexViewModel.workouts">
+    <p>{{workout.description}}</p>
+  </div>
+</div>

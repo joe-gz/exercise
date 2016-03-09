@@ -6,7 +6,7 @@ var router = express.Router();
 var workoutsController = {};
 
 workoutsController.allWorkouts = function(req,res){
-  console.log('hello');
+  console.log('allWorkouts');
   WorkoutModel.find(function(err,workout){
     if(workout){
       res.json(workout)
