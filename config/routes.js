@@ -13,7 +13,7 @@ router.delete('/workouts/:id',workoutsController.deleteWorkout)
 
 router.put('/workouts/:id',workoutsController.updateWorkout)
 
-router.post('/workouts/new',workoutsController.createWorkout)
+router.post('/workouts',workoutsController.createWorkout)
 
 // Tags:
 router.get('/tags',tagsController.allTags)

@@ -20,5 +20,11 @@
       controller: "WorkoutIndexController",
       controllerAs: "WorkoutIndexViewModel"
     })
+    .state("workoutShow", {
+      url: "/workouts/:id",
+      templateUrl: "js/workouts/show.html",
+      controller: "WorkoutShowController",
+      controllerAs: "WorkoutShowViewModel"
+    })
   }
 }());
