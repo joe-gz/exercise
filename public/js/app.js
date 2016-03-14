@@ -5,16 +5,17 @@
   .module("exercise", [
     "ui.router",
     "workouts"
-    ])
+  ])
   .config([
     "$stateProvider",
     RouterFunction
   ]);
 
   function RouterFunction($stateProvider){
+    console.log('RouterFunction');
     $stateProvider
     .state("workoutIndex", {
-      url: "/workouts",
+      url: "/",
       templateUrl: "js/workouts/index.html",
       controller: "WorkoutIndexController",
       controllerAs: "WorkoutIndexViewModel"

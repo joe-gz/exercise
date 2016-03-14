@@ -1,9 +1,9 @@
 "use strict";
-
+ console.log('controller');
 (function(){
   angular
   .module("workouts")
-  .controller("WorkoutIndexController", [
+  .controller('WorkoutIndexController', [
     "WorkoutFactory",
     WorkoutIndexControllerFunction
   ]);

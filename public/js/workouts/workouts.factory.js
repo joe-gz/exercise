@@ -1,5 +1,5 @@
 "use strict";
-
+console.log('factory');
 (function(){
   angular
   .module("workouts")
@@ -10,7 +10,7 @@
 
   function WorkoutFactoryFunction($resource){
     console.log('workout factory');
-    return $resource("/workouts", {}, {
+    return $resource("/workouts/:id", {}, {
       update: {method: "PUT"}
     });
   }
