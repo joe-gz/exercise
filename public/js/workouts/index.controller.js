@@ -1,16 +1,11 @@
 "use strict";
  console.log('controller');
-(function(){
-  angular
-  .module("workouts")
-  .controller('WorkoutIndexController', [
-    "WorkoutFactory",
-    WorkoutIndexControllerFunction
-  ]);
 
-  function WorkoutIndexControllerFunction(WorkoutFactory){
+  angular.module("workouts").controller("WorkoutIndexController", function (
+    $scope,
+    WorkoutFactory
+  ){
     console.log('workout controller');
-    this.workouts = WorkoutFactory.query();
-    this.newWorkout = new WorkoutFactory();
-  }
-}());
+    $scope.workouts = WorkoutFactory.query();
+    $scope.newWorkout = new WorkoutFactory();
+  });
