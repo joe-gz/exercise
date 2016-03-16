@@ -33,9 +33,6 @@ angular.module("workouts").controller("WorkoutIndexController", function (
 
     WorkoutFactory.getWorkoutsData().then($scope.loadWorkout)
 
-  // $scope.workouts = WorkoutFactory.query();
-  // $scope.newWorkout = new WorkoutFactory();
-
   $scope.tags = TagFactory.query();
   $scope.newTag = new TagFactory();
 
