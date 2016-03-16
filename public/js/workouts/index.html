@@ -12,4 +12,8 @@
     <p>id: {{workout._id}}</p>
     <p data-ng-repeat="tag in workout.tags">tags: {{tag.exerciseType}}</p>
   </div>
+
+  <div data-ng-repeat="tag in tags">
+    <p>Type: {{tag.exerciseType}}</p>
+  </div>
 </div>

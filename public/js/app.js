@@ -4,7 +4,8 @@
   angular
   .module("exercise", [
     "ui.router",
-    "workouts"
+    "workouts",
+    "tags"
   ])
   .config([
     "$stateProvider",
@@ -12,7 +13,6 @@
   ]);
 
   function RouterFunction($stateProvider){
-    console.log('RouterFunction');
     $stateProvider
     .state("workoutIndex", {
       url: "/",
@@ -26,5 +26,11 @@
       controller: "WorkoutShowController",
       controllerAs: "WorkoutShowViewModel"
     })
+    .state("tagsIndex", {
+      url: "/tags",
+      templateUrl: "js/workouts/index.html",
+      controller: "TagIndexController",
+      controllerAs: "TagShowViewModel"
+    });
   }
 }());
