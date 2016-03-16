@@ -31,7 +31,7 @@ angular.module('workouts')
   };
 
   service.getOneWorkoutData = function(workout_id){
-    console.log('getWorkoutData');
+    console.log('getOneWorkoutData');
     return $http.get('/workouts/' + workout_id);
   };
 
