@@ -18,9 +18,10 @@
 
 "use strict";
 angular.module('workouts')
-  .factory('WorkoutFactory', function(
-    $http
-  ){
+.factory('WorkoutFactory', function(
+  $http,
+  $resource
+){
 
   var service = {};
 
@@ -33,6 +34,13 @@ angular.module('workouts')
     console.log('getWorkoutData');
     return $http.get('/workouts/' + workout_id);
   };
+
+  function WorkoutFactoryFunction($resource){
+    console.log('workout factory');
+    return $resource("/workouts/:id", {}, {
+      update: {method: "PUT"}
+    });
+  }
 
   return service;
 });

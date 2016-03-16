@@ -3,6 +3,18 @@
 
   <div data-workout-form data-workout="newWorkout"></div>
 
+  <h2>Here are all the Feelings</h2>
+  <h3>(Let's chart these out!)</h3>
+  <div data-ng-repeat="feeling in feelingsArray">
+    <p>{{feeling.feelings}}</p>
+  </div>
+
+  <h2>Here are all the Times</h2>
+  <h3>(Let's chart these out!)</h3>
+  <div data-ng-repeat="time in timeArray">
+    <p>{{time.time}}</p>
+  </div>
+
   <h2>These are all the Workouts</h2>
 
   <div data-ng-repeat="workout in workoutArray">
@@ -11,12 +23,6 @@
     <p>Time: {{workout.time}}</p>
     <p>id: {{workout._id}}</p>
     <p data-ng-repeat="tag in workout.tags">tags: {{tag.exerciseType}}</p>
-  </div>
-
-  <h2>Here are all the Feelings</h2>
-  <h3>(Let's chart these out!)</h3>
-  <div data-ng-repeat="feeling in feelingsArray">
-    <p>{{feeling.feelings}}</p>
   </div>
 
   <div data-ng-repeat="tag in tags">
