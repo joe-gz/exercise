@@ -5,12 +5,17 @@
 
   <h2>These are all the Workouts</h2>
 
-  <div data-ng-repeat="workout in workouts">
+  <div data-ng-repeat="workout in workoutArray">
     <p><a data-ui-sref="workoutShow({id: workout._id})">Description: {{workout.description}}</a></p>
     <p>Feelings: {{workout.feelings}}</p>
     <p>Time: {{workout.time}}</p>
     <p>id: {{workout._id}}</p>
     <p data-ng-repeat="tag in workout.tags">tags: {{tag.exerciseType}}</p>
+  </div>
+
+  <h2>Here are all the Feelings</h2>
+  <div data-ng-repeat="feeling in feelingsArray">
+    <p>{{feeling}}</p>
   </div>
 
   <div data-ng-repeat="tag in tags">
