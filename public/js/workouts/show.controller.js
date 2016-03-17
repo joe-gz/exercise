@@ -5,29 +5,17 @@ angular.module("workouts").controller("WorkoutShowController", function (
   $stateParams,
   WorkoutFactory
 ){
-console.log('show controller');
-  $scope.workoutArray = []
-  $scope.feelingsArray = []
-  $scope.timeArray = []
+  console.log('show controller');
 
+  $scope.getResults = function(results){
+      $scope.workoutShow = results.description
+      $scope.feelingShow = results.feelings
+      $scope.timeShow = results.time
+    };
 
-  // $scope.getResults = function(results){
-  //   for (var i = 0; i < results.length; i++){
-  //     var feelings = results[i].feelings;
-  //     var time = results[i].time;
-  //     var workout = results[i]
-  //     $scope.workoutArray.push(workout)
-  //     $scope.feelingsArray.push({'feelings':feelings})
-  //     $scope.timeArray.push({'time':time})
-  //   }
-  // };
-
-  $scope.loadWorkout = function(workoutData){
-    $scope.workout = workoutData.data;
-    console.log($scope.workout);
-    // $scope.getResults($scope.workout);
-  };
-
-  WorkoutFactory.getOneWorkoutData($stateParams.id).then($scope.loadWorkout)
-  // $scope.workout = WorkoutFactory.get({id:$stateParams.id});
+  WorkoutFactory.get({id:$stateParams.id}).$promise.then(function(data) {
+    console.log(data);
+    $scope.data = data
+    $scope.getResults($scope.data)
+  })
 });

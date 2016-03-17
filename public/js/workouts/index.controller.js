@@ -23,14 +23,21 @@ angular.module("workouts").controller("WorkoutIndexController", function (
     }
   };
 
-  $scope.loadWorkout = function(workoutData){
-    $scope.workout = workoutData.data;
-    $scope.getResults($scope.workout);
-  };
+  // $scope.loadWorkout = function(workoutData){
+  //   console.log(workoutData);
+  //   // $scope.workout = workoutData.data;
+  //   // $scope.getResults($scope.workout);
+  // };
 
-  WorkoutFactory.getWorkoutsData().then($scope.loadWorkout)
+  WorkoutFactory.query().$promise.then(function(data) {
+    console.log(data.length);
+    $scope.data = data
+    $scope.getResults($scope.data)
+  })
+  // WorkoutFactory.getWorkoutsData().then($scope.loadWorkout)
 
   $scope.tags = TagFactory.query();
   $scope.newTag = new TagFactory();
+  $scope.newWorkout = new WorkoutFactory();
 
 });
