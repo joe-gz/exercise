@@ -1,11 +1,12 @@
 var express = require('express');
 var WorkoutModel = require('../models/workouts');
+var TagModel = require("../models/tags");
 var router = express.Router();
 
 var workoutsController = {};
 
 workoutsController.allWorkouts = function(req,res){
-  console.log('hello');
+  console.log('allWorkouts');
   WorkoutModel.find(function(err,workout){
     if(workout){
       res.json(workout)
@@ -28,13 +29,9 @@ workoutsController.createWorkout = function(req,res){
     time: req.body.time
   };
   console.log(workout);
-  new WorkoutModel(workout).save().then(function(err,workout){
-    if (err){
-      console.log(err);
-    } else {
-      console.log('success');
-      res.json(workout)
-    }
+  new WorkoutModel(workout).save().then(function(workout){
+    console.log('success');
+    res.json(workout)
   })
 }
 
@@ -46,5 +43,35 @@ workoutsController.deleteWorkout = function(req,res){
     res.json({success: true});
   })
 }
+
+workoutsController.updateWorkout = function(req, res){
+  WorkoutModel.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}).then(function(workout){
+    res.json(workout)
+  })
+}
+
+workoutsController.addTag = function(req, res){
+  console.log('test');
+  var exercise = req.body.exerciseType;
+  TagModel.findOne({exerciseType: exercise}).then(function(tag){
+    WorkoutModel.findById(req.params.id, function(err, docs){
+      if(err){
+        console.log(err)
+      }
+      else{
+        docs.tags.push(tag);
+        docs.save(function(err){
+          if(!err){
+            console.log('no err');
+            res.json(docs)
+          }
+          else{
+            console.log(err);
+          }
+        })
+      }
+    });
+  });
+};
 
 module.exports = workoutsController;
