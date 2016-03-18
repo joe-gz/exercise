@@ -5,10 +5,9 @@ var router = express.Router();
 var tagsController = {};
 
 tagsController.allTags = function(req,res){
-  console.log('hello');
-  TagModel.find(function(err,tag){
-    if(tag){
-      res.json(tag)
+  TagModel.find(function(err,tags){
+    if(tags){
+      res.json(tags)
     } else {
       console.log(err);
     }
@@ -29,3 +28,14 @@ tagsController.createTag = function(req,res){
     }
   })
 }
+
+tagsController.deleteTag = function(req,res){
+  TagModel.findById(req.params.id).then(function(tag){
+    return tag.remove();
+  }).then(function(){
+    console.log("delete");
+    res.json({success: true});
+  })
+}
+
+module.exports = tagsController;
