@@ -20,7 +20,7 @@ router.get('/tags',tagsController.allTags)
 
 router.delete('/tags/:id',tagsController.deleteTag)
 
-router.post('/tags/new',tagsController.createTag)
+router.post('/tags',tagsController.createTag)
 
 router.put('/workouts/:id/addtag',workoutsController.addTag)
 

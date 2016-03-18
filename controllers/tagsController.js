@@ -16,16 +16,14 @@ tagsController.allTags = function(req,res){
 
 tagsController.createTag = function(req,res){
   var tag = {
-    description:req.body.exerciseType
+    exerciseType:req.body.exerciseType
   };
-  console.log(tag);
-  new TagModel(tag).save().then(function(err,tag){
-    if (err){
-      console.log(err);
-    } else {
+  console.log("req: " + req.body.exerciseType)
+  console.log("This is the tag: " + tag);
+  new TagModel(tag).save().then(function(tag){
       console.log('success');
+      console.log(tag);
       res.json(tag)
-    }
   })
 }
 
