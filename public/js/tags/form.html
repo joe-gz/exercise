@@ -1,7 +1,9 @@
 <form>
-  <input placeholder="Exercise Type" data-ng-model="tag.exerciseType" />
-  <button type="button" data-ng-if="!tag._id" data-ng-click="create()">Create</button>
+  <div data-ng-if="tag._id == undefined">
+    <input placeholder="Exercise Type" data-ng-model="tag.exerciseType" />
+    <button type="button" data-ng-if="!tag._id" data-ng-click="create()">Create</button>
+  </div>
   <div data-ng-if="tag._id">
-  <button type="button" data-ng-click="delete()">Delete</button>
+    <button type="button" data-ng-click="delete()">Delete</button>
   </div>
 </form>
